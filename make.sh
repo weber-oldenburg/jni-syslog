@@ -1,4 +1,8 @@
 #! /bin/bash
+#
+# Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0
+#
+
 
 mvn clean
 
@@ -12,5 +16,9 @@ cc -m32 -shared -fPIC -I /opt/Apps/jdk/include -I /opt/Apps/jdk/include/linux -o
 set +x
 
 mvn install
+
+/opt/Apps/jdk/bin/javadoc -classpath target/classes/:/home/weber/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar\
+    -d target/apidocs -source 1.7 -public -sourcepath src/main/java/\
+    de.weber_oldenburg.syslog de.weber_oldenburg.syslog.log4j
 
 

@@ -1,4 +1,7 @@
 package de.weber_oldenburg.syslog;
+/*
+   Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0
+ */
 
 import java.io.File;
 import java.io.FileOutputStream;

@@ -1,5 +1,9 @@
 package de.weber_oldenburg.syslog.log4j;
 
+/*
+   Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0
+ */
+
 import de.weber_oldenburg.syslog.Facility;
 import de.weber_oldenburg.syslog.Level;
 import de.weber_oldenburg.syslog.Syslog;

@@ -1,3 +1,7 @@
+/*
+   Licensed under the Apache License, Version 2.0. http://www.apache.org/licenses/LICENSE-2.0
+ */
+
 
 #include "de_weber_oldenburg_syslog_Syslog.h"
 #include <syslog.h>
