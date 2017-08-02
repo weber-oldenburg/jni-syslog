@@ -15,12 +15,13 @@ import org.apache.log4j.spi.LoggingEvent;
  */
 public class SyslogAppender extends AppenderSkeleton {
 
-  private String ident;
   private Facility facility = Facility.USER;
 
   @Override
   protected void append(LoggingEvent event) {
-    Syslog.log(ident, facility, getLevel(event.getLevel()), String.valueOf(event.getMessage()));
+    StringBuilder identBuilder = new StringBuilder(event.getLogger().getName())
+        .append("[").append(event.getThreadName()).append("]");
+    Syslog.log(identBuilder.toString(), facility, getLevel(event.getLevel()), String.valueOf(event.getMessage()));
   }
 
   private Level getLevel(org.apache.log4j.Level level) {
@@ -37,15 +38,11 @@ public class SyslogAppender extends AppenderSkeleton {
     return false;
   }
 
-  public void setIdent(String ident) {
-    this.ident = ident;
-  }
-
   public void setFacility(Facility facility) {
     this.facility = facility;
   }
 
-  public void setFacility(String facility) {
-    this.facility = Facility.parse(facility);
+  public void setFacilityName(String facilityName) {
+    this.facility = Facility.parse(facilityName);
   }
 }

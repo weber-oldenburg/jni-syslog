@@ -5,21 +5,24 @@ package de.weber_oldenburg.syslog;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Logger;
 
 /**
  *
  */
 public class Syslog {
 
+  private static Logger LOG = Logger.getLogger(Syslog.class.getName());
+
   static {
     String osArch = System.getProperties().getProperty("os.arch");
-    InputStream inputStream
-        = ClassLoader.getSystemResourceAsStream("de/weber_oldenburg/syslog/libSyslog_" + osArch + ".so");
+    String libPath = "de/weber_oldenburg/syslog/libSyslog_" + osArch + ".so";
+    InputStream inputStream = Syslog.class.getClassLoader().getResourceAsStream(libPath);
 
     try {
       if (inputStream != null) {
+//        System.out.println("found libraty at " + libPath);
         File libSyslog_ = File.createTempFile("libSyslog_", ".so");
         FileOutputStream outputStream = new FileOutputStream(libSyslog_);
         byte[] buffer = new byte[1024];
@@ -31,10 +34,13 @@ public class Syslog {
         outputStream.flush();
         System.load(libSyslog_.getAbsolutePath());
         libSyslog_.delete();
+      } else {
+        System.err.println("Library for " + osArch + " at path \"" + libPath + "\" not found!");
       }
-    } catch (IOException e) {
+    } catch (Throwable e) {
       System.err.println(e.getMessage());
       e.printStackTrace(System.err);
+      LOG.log(java.util.logging.Level.SEVERE, "Caught: ", e);
     }
   }
 
@@ -49,7 +55,12 @@ public class Syslog {
    * @param message The log message
    */
   public static void log(String ident, Facility facility, Level level, String message) {
-    log(ident, facility.getCode(), level.ordinal(), message);
+    try {
+      log(ident, facility.getCode(), level.ordinal(), message);
+    } catch (Throwable e) {
+      System.err.println(e.getMessage());
+      e.printStackTrace(System.err);
+    }
   }
 
   private static native void log(String ident, int facility, int level, String message);

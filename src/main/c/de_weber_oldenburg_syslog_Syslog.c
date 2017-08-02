@@ -16,6 +16,6 @@ JNIEXPORT void JNICALL Java_de_weber_1oldenburg_syslog_Syslog_log (JNIEnv *env, 
     ident = (*env)->GetStringUTFChars(env, jident, 0);
   }
   openlog(ident, 0, 0);
-  syslog(jfacility | jlevel, message, "");
+  syslog(jfacility | jlevel, "%s", message);
   closelog();
 }
