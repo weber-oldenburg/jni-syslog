@@ -8,46 +8,46 @@ package de.weber_oldenburg.syslog;
  * Enum representing the syslog facilities
  */
 public enum Facility {
-  /** kernel messages: (0<<3) */
+  /** kernel messages: (0&lt;&lt;3) */
   KERN(0<<3),
-  /** random user-level messages: (1<<3) */
+  /** random user-level messages: (1&lt;&lt;3) */
   USER(1<<3),
-  /** mail system: (2<<3) */
+  /** mail system: (2&lt;&lt;3) */
   MAIL(2<<3),
-  /** system daemons: (3<<3) */
+  /** system daemons: (3&lt;&lt;3) */
   DAEMON(3<<3),
-  /** security/authorization messages: (4<<3) */
+  /** security/authorization messages: (4&lt;&lt;3) */
   AUTH(4<<3),
-  /** messages generated internally by syslogd: (5<<3) */
+  /** messages generated internally by syslogd: (5&lt;&lt;3) */
   SYSLOG(5<<3),
-  /** line printer subsystem: (6<<3) */
+  /** line printer subsystem: (6&lt;&lt;3) */
   LPR(6<<3),
-  /** network news subsystem: (7<<3) */
+  /** network news subsystem: (7&lt;&lt;3) */
   NEWS(7<<3),
-  /** UUCP subsystem: (8<<3) */
+  /** UUCP subsystem: (8&lt;&lt;3) */
   UUCP(8<<3),
-  /** clock daemon: (9<<3) */
+  /** clock daemon: (9&lt;&lt;3) */
   CRON(9<<3),
-  /** security/authorization messages (private): (10<<3) */
+  /** security/authorization messages (private): (10&lt;&lt;3) */
   AUTHPRIV(10<<3),
-  /** ftp daemon: (11<<3) */
+  /** ftp daemon: (11&lt;&lt;3) */
   FTP(11<<3),
 
-  /** reserved for local use: (16<<3) */
+  /** reserved for local use: (16&lt;&lt;3) */
   LOCAL0(16<<3),
-  /** reserved for local use: (17<<3) */
+  /** reserved for local use: (17&lt;&lt;3) */
   LOCAL1(17<<3),
-  /** reserved for local use: (18<<3) */
+  /** reserved for local use: (18&lt;&lt;3) */
   LOCAL2(18<<3),
-  /** reserved for local use: (19<<3) */
+  /** reserved for local use: (19&lt;&lt;3) */
   LOCAL3(19<<3),
-  /** reserved for local use: (20<<3) */
+  /** reserved for local use: (20&lt;&lt;3) */
   LOCAL4(20<<3),
-  /** reserved for local use: (21<<3) */
+  /** reserved for local use: (21&lt;&lt;3) */
   LOCAL5(21<<3),
-  /** reserved for local use: (22<<3) */
+  /** reserved for local use: (22&lt;&lt;3) */
   LOCAL6(22<<3),
-  /** reserved for local use: (23<<3) */
+  /** reserved for local use: (23&lt;&lt;3) */
   LOCAL7(23<<3);
 
   private int code;

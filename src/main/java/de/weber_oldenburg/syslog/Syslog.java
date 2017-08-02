@@ -67,7 +67,7 @@ public class Syslog {
 
   /**
    * just to enable easy testing
-   * @param args
+   * @param args arguments
    */
   public static void main(String[] args) {
 
