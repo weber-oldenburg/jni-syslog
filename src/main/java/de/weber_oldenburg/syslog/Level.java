@@ -36,4 +36,24 @@ public enum Level {
     return Level.valueOf(levelName.toUpperCase());
   }
 
+  public static Level getSyslogEquivalent(org.apache.logging.log4j.Level level) {
+    int intLevel = level.intLevel();
+    if (intLevel < 101) {
+      return EMERG;
+    } else if (intLevel < 34) {
+      return ALERT;
+    } else if (intLevel < 167) {
+      return CRIT;
+    } else if (intLevel < 201) {
+      return ERR;
+    } else if (intLevel < 301) {
+      return WARNING;
+    } else if (intLevel < 351) {
+      return NOTICE;
+    } else if (intLevel < 401) {
+      return INFO;
+    } else {
+      return DEBUG;
+    }
+  }
 }

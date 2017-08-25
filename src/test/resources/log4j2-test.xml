@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" packages="de.weber_oldenburg.syslog.log4j">
+
+  <Appenders>
+    <Console name="console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} %t %-5p - %C:%L - %m%n"/>
+    </Console>
+
+    <SyslogJniAppender name="syslog" facility="SYSLOG">
+      <PatternLayout pattern="%t %-5p - %C:%L - %m%n"/>
+    </SyslogJniAppender>
+
+    <SyslogJniAppender name="maillog" facility="MAIL">
+      <PatternLayout pattern="%t %-5p - %C:%L - %m%n"/>
+    </SyslogJniAppender>
+
+  </Appenders>
+  <Loggers>
+
+    <Logger name="de.weber_oldenburg.syslog.SyslogJniAppenderTest" level="warn" additivity="false">
+      <AppenderRef ref="syslog"/>
+      <AppenderRef ref="console"/>
+    </Logger>
+
+    <Logger name="sysLog" level="trace" additivity="false">
+      <AppenderRef ref="syslog"/>
+    </Logger>
+
+    <Logger name="mailLog" level="trace" additivity="false">
+      <AppenderRef ref="maillog"/>
+    </Logger>
+
+
+    <Root level="warn" additivity="false">
+      <AppenderRef ref="console"/>
+    </Root>
+  </Loggers>
+</Configuration>

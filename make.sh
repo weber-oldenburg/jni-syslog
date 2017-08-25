@@ -19,7 +19,7 @@ set +x
 
 mvn install
 
-${JAVA_HOME}/bin/javadoc -classpath target/classes/:/home/weber/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar\
+${JAVA_HOME}/bin/javadoc -classpath target/classes/:/home/weber/.m2/repository/org/apache/logging/log4j/log4j-api/2.8.2/log4j-api-2.8.2.jar:/home/weber/.m2/repository/org/apache/logging/log4j/log4j-core/2.8.2/log4j-core-2.8.2.jar\
     -d target/apidocs -source 1.7 -public -sourcepath src/main/java/\
     de.weber_oldenburg.syslog de.weber_oldenburg.syslog.log4j
 
